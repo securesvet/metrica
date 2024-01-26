@@ -1,4 +1,7 @@
-import Image from "next/image";
+'use client';
+
+import axios from 'axios';
+// import { NextRequest, NextResponse, userAgent } from 'next/server';
 import {
     Table,
     TableBody,
@@ -8,8 +11,32 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/Table';
+import {useVisitorInfo} from "@/hooks/useVisitorInfo";
 
 export default function Home() {
+    const ip = useVisitorInfo();
+
+    console.log(ip);
+
+    // const submit = async() => {
+    //     try {
+    //         console.log('yeah buddy');
+    //         await axios.post('http://localhost:3001/addVisit', {
+    //             color, wheel, email, address,
+    //         })
+    //         if (validateEmail(email) && validateAddress(address)) {
+    //             setSuccess(true);
+    //         }
+    //         else {
+    //
+    //         }
+    //     }
+    //     catch(e) {
+    //         console.log("Error occurred, while trying to submit form: ", e);
+    //     }
+    //
+    // }
+
   return (
     <main>
         <Table>
@@ -24,7 +51,7 @@ export default function Home() {
             </TableHeader>
             <TableBody>
                 <TableRow>
-                    <TableCell className="font-medium">INV001</TableCell>
+                    <TableCell className="font-medium">{ip}</TableCell>
                     <TableCell>Paid</TableCell>
                     <TableCell>Credit Card</TableCell>
                     <TableCell className="text-right">$250.00</TableCell>
