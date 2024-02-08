@@ -1,23 +1,19 @@
 'use client';
 
 import {useVisitorInfo} from "@/hooks/useVisitorInfo";
-
-interface VisitData {
-    _id: string,
-    ip: string,
-    browser: string,
-    os: string,
-    device: string,
-    __v: number
-}
+import {useUserAgent} from "@/hooks/useUserAgent";
 
 export default function Home() {
-    const ip = useVisitorInfo();
+    const {ipAddress, countryCode, countryName, city} = useVisitorInfo();
+
+    const ua = useUserAgent();
 
     return (
-        <main>
-            {ip}
-
-        </main>
+        <>
+            <h1>Your useragent is {ua}</h1>
+            <h1>IP {ipAddress}</h1>
+            <h1>You live in {countryName} in {city}</h1>
+            <h1>Country Code: {countryCode}</h1>
+        </>
     );
 }
